@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Annual Award Ceremony 2025 - Video</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d3cce3, #e9e4f0);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 30px 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      background: white;
+      border: 3px solid #555;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: #222;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #444;
+      margin: 30px 0 15px;
+      border-bottom: 2px solid #999;
+      padding-bottom: 5px;
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .video-container video {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+      border: 3px solid #999;
+    }
+
+    .go-home-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+      display: block;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .go-home-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🏆 Annual Award Ceremony 2025🎉</h1>
+
+  <!-- Countdown Timer -->
+  <div class="countdown-container">
+    <div class="countdown-title">
+      ⏳ Countdown to 2025 Award Ceremony (Nov 1, 2025, 6:00 PM)
+    </div>
+    <div class="countdown-timer" id="countdown">
+      <div class="countdown-segment">
+        <span class="countdown-value" id="cd-days">--</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-segment">
+        <span class="countdown-value" id="cd-hours">--</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-segment">
+        <span class="countdown-value" id="cd-mins">--</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-segment">
+        <span class="countdown-value" id="cd-secs">--</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>🎥 Watch the Teablo Video of previous Ceremony</h2>
+  
+<a href="https://www.youtube.com/watch?v=7AZRcvcXD9I" target="_blank" class="youtube-link">
+  <div class="youtube-box">
+    <img src="award_pic.jpg" alt="Teablo Video">
+    <div class="play-button"></div>
+  </div>
+</a>
+
+<style>
+.youtube-link {
+  text-decoration: none;
+}
+
+.youtube-box {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.youtube-box:hover {
+  transform: scale(1.02);
+}
+
+.youtube-box img {
+  width: 100%;
+  display: block;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/e/e4/YouTube_play_button_icon_%282013-2017%29.svg') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+}
+</style>
+
+
+<h1 style="
+  font-size: 40px;
+  color: #e60606;
+  text-shadow: 1px 1px 5px #00000088;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  font-family: 'Segoe UI', sans-serif;
+  display: inline-block;
+">
+  🙄This video is from 2024-Cermony but wait 2025-Cermony is Comming Soon...
+</h1>
+
+
+  <!-- Go Home Button -->
+  <button class="go-home-btn" onclick="goHome()">Go to Home Page</button>
+</div>
+
+<script>
+  function goHome() {
+    window.location.href = "index.html"; // Home page file ka naam dein
+  }
+</script>
+
+<style>
+  .countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .countdown-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #e60606;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 4px #00000033;
+    text-align: center;
+  }
+  .countdown-timer {
+    display: flex;
+    gap: 18px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0,0,0,0.18);
+    border-radius: 12px;
+    padding: 10px 24px;
+    box-shadow: 0 2px 12px #00000022;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .countdown-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+  }
+  .countdown-value {
+    font-size: 2.1rem;
+    line-height: 1.1;
+  }
+  .countdown-label {
+    font-size: 0.85rem;
+    color: #ffd700;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px #00000044;
+  }
+  @media (max-width: 600px) {
+    .countdown-timer {
+      font-size: 1.2rem;
+      padding: 8px 8px;
+      gap: 8px;
+    }
+    .countdown-segment {
+      min-width: 38px;
+    }
+    .countdown-title {
+      font-size: 1.05rem;
+    }
+    .countdown-value {
+      font-size: 1.3rem;
+    }
+    .countdown-label {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+<script>
+  // Target date: November 1, 2025, 6:00 PM local time
+  const targetDate = new Date(2025, 10, 1, 18, 0, 0); // Month is 0-indexed, so 10 = November
+
+  function updateCountdown() {
+    const now = new Date();
+    let diff = targetDate - now;
+
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('cd-days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('cd-hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('cd-mins').textContent = mins.toString().padStart(2, '0');
+    document.getElementById('cd-secs').textContent = secs.toString().padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+  </body></html>

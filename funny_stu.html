@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Backbenchers Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .card {
+      border: 1px solid #000;
+      width: 90vw;
+      max-width: 300px;
+      background: #fff;
+      padding: 10px;
+      text-align: center;
+      box-sizing: border-box;
+      height: auto; /* Ensures the box grows with more content */
+    }
+
+    img {
+      width: 130px;
+      height: 130px;
+      margin-top: 10px;
+      border-radius: 50%;
+    }
+
+    h2 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .go-home-btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .go-home-btn:hover {
+      background-color: #0056b3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1><u>Funny Students 🤓</u></h1>
+
+  <div class="container">
+
+    <div class="card">
+      <img src="download (24).jpeg" alt="Abubakar">
+      <h2>Abu-Bakar 🤠</h2>
+      <h3>
+      <p>Nike-name: Dr.Saeed</p>   
+      <p>Position: -1st 😬</p>
+      <p>Subject: Biology</p>
+      <p>Degree level: Neurologist</p></h3>
+    </div>
+
+    <div class="card">
+      <img src="download (20).jpeg" alt="Hasnain">
+      <h2>Hasnain Arshad😎</h2>
+      <h3>
+      <p>Nike-name: <s>Chummi</s></p>  
+      <p>Position: 16th 🥴</p>
+      <p>Subject: Computer Science 💻</p>
+      <p>Degree Level: System Enginner 💻</p></h3>
+    </div>
+
+    <div class="card">
+      <img src="download (25).jpeg" alt="Abdullah Asghar">
+      <h2>Abdulah Asghar 😅</h2>
+      <h3>
+      <p>Nike-name: Bhatti</p>
+      <p>Position: 17th 🤷‍♂️</p>  
+      <p>Subject: Biology 🧬</p>
+      <p>Degree Level: Ph.D 😯</p></h3>
+    </div>
+
+    <div class="card">
+        <img src="download (9).jpeg" alt="Mujtaba">
+        <h2>Mujtaba 😆</h2>
+        <h3>
+        <p>Nike-name: Mujji</p>
+        <p>Position: Result is comming soon 🤐</p>
+        <p>Subject: Computer 😲</p>
+        <p>Degree Level: Ai Engineering 😱</p></h3>
+      </div>
+
+  </div>
+  
+    <!-- Button -->
+    <button class="go-home-btn" onclick="goHome()">Go to Home Page</button>
+
+    <script>
+      function goHome() {
+        window.location.href = "index.html"; // Home page file ka naam dein
+      }
+    </script>
+    <br><br>
+
+</body>
+</html>
