@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Search</title>
+  <style>
+    :root {
+      --primary-color: #2196F3;
+      --secondary-color: #1976D2;
+      --text-color: #333;
+      --background-color: #f5f7fa;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --border-radius: 12px;
+      --transition-speed: 0.3s;
+      --overlay-bg: rgba(255, 255, 255, 0.98);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      text-align: center;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1 u {
+      text-decoration: none;
+      border-bottom: 4px solid var(--primary-color);
+      padding-bottom: 5px;
+    }
+
+    h1 sup {
+      font-size: 1rem;
+      top: -1em;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+
+    input {
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      width: 100%;
+      border: 2px solid transparent;
+      border-radius: var(--border-radius);
+      background: white;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: all var(--transition-speed) ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 6px 12px var(--shadow-color);
+      transform: translateY(-2px);
+    }
+
+    #wrapper {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0.5rem;
+      max-width: 100%;
+      margin: 0.5rem auto;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 16px var(--shadow-color);
+      display: none;
+      position: absolute;
+      z-index: 999;
+      width: 100%;
+      max-height: 300px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary-color) transparent;
+    }
+
+    ul::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ul::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ul::-webkit-scrollbar-thumb {
+      background-color: var(--primary-color);
+      border-radius: 20px;
+    }
+
+    ul li {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all var(--transition-speed) ease;
+    }
+
+    ul li:hover {
+      background: rgba(33, 150, 243, 0.1);
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    img {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 300px;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 20px var(--shadow-color);
+      transition: transform var(--transition-speed) ease;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    .go-home-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      margin: 1rem 0;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .go-home-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px var(--shadow-color);
+    }
+
+    .go-home-btn:active {
+      transform: translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      input {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Help Button and Overlay Styles */
+    .help-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      transition: all var(--transition-speed) ease;
+      z-index: 998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .help-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px var(--shadow-color);
+      background-color: var(--secondary-color);
+    }
+
+    .help-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--overlay-bg);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-speed) ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .help-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .help-overlay-header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .help-overlay-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: all var(--transition-speed) ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .close-btn:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+      transform: rotate(90deg);
+    }
+
+    .name-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .name-card {
+      background: white;
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 4px var(--shadow-color);
+      cursor: pointer;
+      transition: all var(--transition-speed) ease;
+      text-align: left;
+    }
+
+    .name-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--shadow-color);
+      background-color: rgba(33, 150, 243, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .help-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .help-overlay {
+        padding: 1rem;
+      }
+
+      .help-overlay-title {
+        font-size: 1.5rem;
+      }
+
+      .name-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+    <button class="help-btn" aria-label="Help" onclick="toggleHelpOverlay()">?</button>
+
+    <div class="help-overlay" id="helpOverlay">
+      <div class="help-overlay-header">
+        <h2 class="help-overlay-title">Available Student Names</h2>
+        <button class="close-btn" aria-label="Close" onclick="toggleHelpOverlay()">×</button>
+      </div>
+      <div class="name-grid" id="nameGrid">
+        <!-- Names will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <h1><u>Search Students</u></h1>
+    
+    
+    <!-- Button -->
+  <button class="go-home-btn" onclick="goHome()">Go to Home Page</button>
+
+  <script>
+  
+      function goHome() {
+        window.location.href = "index.html"; // Home page file ka naam dein
+      }
+    
+  </script><br><br>
+    <h2>Enter Student Name</h2>
+
+  <div id="wrapper">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search Here" 
+      oninput="filterNames()" 
+      onkeydown="checkEnter(event)"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      data-form-type="other"
+    >
+    <ul id="suggestions"></ul>
+  </div>
+
+  <div id="imageContainer"></div>
+
+  <script>
+    const names = [
+      "Usman Ansar", "Ahmad Hassan", "Taseer Ahmad", "Saad Amir", "Basit Asghar",
+      "Ahmad Iqtadar", "Fasih-ul-Rehman", "Mubashir", "Sayed Mujtaba", "Aftab Sarfraz",
+      "Bilal Shabir", "Summer Ali", "Anus Saleem", "Mujtaba Akram", "Shehroz",
+      "Hassan Nisar", "Faizan Raza", "Subhan Sarwar", "Muhammad Ahmad", "Husnain Arshad",
+      "Wasif Nawaz", "AbdulRehman Rashid", "Haseeb Ahmad", "Abubakar Saeed", "Abdullah Asghar",
+      "Bilal Ramzan", "AbdulRehman Ifthikar"
+    ];
+
+    const searchInput = document.getElementById("searchInput");
+    const suggestions = document.getElementById("suggestions");
+    const imageContainer = document.getElementById("imageContainer");
+    const searchedNames = new Set();
+
+    function filterNames() {
+      const query = searchInput.value.toLowerCase();
+      suggestions.innerHTML = "";
+
+      if (query.length === 0) {
+        suggestions.style.display = "none";
+        return;
+      }
+
+      const filtered = names.filter(name => 
+        name.toLowerCase().includes(query) && !searchedNames.has(name)
+      );
+
+      filtered.forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        li.onclick = () => {
+          searchInput.value = name;
+          suggestions.style.display = "none";
+          searchedNames.add(name);
+          showImage(name);
+        };
+        suggestions.appendChild(li);
+      });
+
+      suggestions.style.display = filtered.length ? "block" : "none";
+    }
+
+    function checkEnter(event) {
+      if (event.key === "Enter") {
+        const query = searchInput.value.trim();
+        if (query && names.includes(query)) {
+          searchedNames.add(query);
+          showImage(query);
+        }
+      }
+    }
+
+    function showImage(name) {
+      const fileName = names.indexOf(name) !== -1 ? `download (${names.indexOf(name)+1}).jpeg` : "";
+      imageContainer.innerHTML = fileName ? `<img src="${fileName}" alt="${name}">` : "";
+      if (fileName) {
+        speakStudentName(name);
+      }
+    }
+
+    // Web Speech API: Speak student name
+    function speakStudentName(name) {
+      if (!('speechSynthesis' in window)) return;
+      const msg = new SpeechSynthesisUtterance(`Hello viewer, I am ${name}`);
+      msg.rate = 0.85; // slow
+      msg.pitch = 1.1; // medium pitch
+      msg.volume = 1;
+      msg.lang = 'en-US';
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(msg);
+    }
+  </script>
+
+  <br>
+
+  <script>
+    // Populate name grid
+    function populateNameGrid() {
+      const nameGrid = document.getElementById('nameGrid');
+      nameGrid.innerHTML = ''; // Clear existing content
+      names.forEach(name => {
+        const nameCard = document.createElement('div');
+        nameCard.className = 'name-card';
+        nameCard.textContent = name;
+        nameCard.onclick = () => {
+          searchInput.value = name;
+          showImage(name);
+          toggleHelpOverlay();
+        };
+        nameGrid.appendChild(nameCard);
+      });
+    }
+
+    // Toggle help overlay
+    function toggleHelpOverlay() {
+      const overlay = document.getElementById('helpOverlay');
+      const isOpening = !overlay.classList.contains('active');
+      overlay.classList.toggle('active');
+      if (isOpening) {
+        speakHelpMessage();
+      }
+    }
+
+    // Web Speech API: Speak help overlay message
+    function speakHelpMessage() {
+      if (!('speechSynthesis' in window)) return;
+      const msg = new SpeechSynthesisUtterance('Here are the available students.');
+      msg.rate = 0.85;
+      msg.pitch = 1.1;
+      msg.volume = 1;
+      msg.lang = 'en-US';
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(msg);
+    }
+
+    // Initialize name grid when page loads
+    document.addEventListener('DOMContentLoaded', populateNameGrid);
+
+    // Close overlay when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const overlay = document.getElementById('helpOverlay');
+        if (overlay.classList.contains('active')) {
+          toggleHelpOverlay();
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
